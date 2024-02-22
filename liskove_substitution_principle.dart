@@ -23,25 +23,28 @@ This way, you can use any type of chair interchangeably where a
 Chair is expected, without unexpected behavior. This demonstrates how LSP promotes code reliability and flexibility.
  */
 
-  Ostrich ostrich = Ostrich();
+  Rectangle rectangle = Rectangle(5, 4);
 
-  ostrich.fly();
+  print("area of the rectangle is ${rectangle.area()}");
 }
 
-abstract class Bird {
-  void fly();
+abstract class Shape {
+  double area();
 }
 
-class Sparrow implements Bird {
+class Rectangle implements Shape {
+  double width, height;
+
+  Rectangle(this.width, this.height);
+
   @override
-  void fly() {
-    print('Sparrow can fly');
-  }
+  double area() => width * height;
 }
 
-class Ostrich implements Bird {
+class Square implements Shape {
+  double side;
+  Square(this.side);
+
   @override
-  void fly() {
-    print("You know Ostrich can't fly right?");
-  }
+  double area() => side * side; // Overrides area calculation for square
 }
